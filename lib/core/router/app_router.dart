@@ -1,12 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/presentation/screens/movies/movie_screen.dart';
+import 'package:movies_app/presentation/screens/movies/new_home_page.dart';
 import 'package:movies_app/presentation/screens/screens.dart';
 
 final appRouter = GoRouter(initialLocation: '/', routes: [
   GoRoute(
       path: '/',
-      name: HomeScreen.name,
-      builder: (context, state) => HomeScreen(),
+      name: HomePage.name,
+      builder: (context, state) => HomePage(),
       routes: [
         GoRoute(
             path: '/movie/:id',
