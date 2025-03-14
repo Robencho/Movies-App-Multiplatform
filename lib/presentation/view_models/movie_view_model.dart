@@ -1,29 +1,31 @@
-// presentation/view_models/movie_view_model.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movies_app/core/di/injection_container.dart';
-import 'package:movies_app/domain/usecases/get_popular_movies.dart';
+import 'package:movies_app/domain/usecases/movie_usecase.dart';
 
 import '../../domain/entities/new_movie/movie.dart';
 
 class MovieViewModel extends StateNotifier<AsyncValue<List<Movie>>> {
-  final GetPopularMoviesUseCase getPopularMoviesUseCase;
+ // final GetPopularMoviesUseCase getPopularMoviesUseCase;
+  final MovieUsecase useCase;
 
-  MovieViewModel(this.getPopularMoviesUseCase) : super(const AsyncValue.loading()) {
+  int _currentPage = 1;
+  bool _hashmorePages = true;
+
+  MovieViewModel(this.useCase)
+      : super(const AsyncValue.loading()) {
     loadMovies();
   }
 
   Future<void> loadMovies() async {
+    if (!_hashmorePages) return;
     state = const AsyncValue.loading();
     try {
-      final movies = await getPopularMoviesUseCase.execute();
-      state = AsyncValue.data(movies);
+      final newMovies =
+          await useCase.execute(page: _currentPage);
+      _hashmorePages = newMovies.isNotEmpty;
+      _currentPage++;
+      state = AsyncValue.data([...state.value ?? [], ...newMovies]);
     } catch (e) {
       state = AsyncValue.error(e, StackTrace.current);
     }
   }
 }
-
-// Provider asociado
-final movieViewModelProvider = StateNotifierProvider<MovieViewModel, AsyncValue<List<Movie>>>((ref) {
-  return MovieViewModel(getIt<GetPopularMoviesUseCase>());
-});

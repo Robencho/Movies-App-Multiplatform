@@ -14,6 +14,7 @@ class DiosClient{
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         options.queryParameters['api_key'] = Environment.theMovieDbKey;
+        options.queryParameters['language'] = 'es-MX';
         return handler.next(options);
       },
       onError: (DioException e, handler){
