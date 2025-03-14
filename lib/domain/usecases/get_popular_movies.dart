@@ -9,7 +9,7 @@ class GetPopularMoviesUseCase implements MovieUsecase {
   GetPopularMoviesUseCase(this.repository);
 
   @override
-  Future<List<Movie>> execute({int page = 1}) async {
+  Future<({List<Movie>movies, int totalPages})> execute({int page = 1}) async {
     return await repository.getPopularMovies(page: page);
   }
 }

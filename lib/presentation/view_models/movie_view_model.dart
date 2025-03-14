@@ -4,28 +4,36 @@ import 'package:movies_app/domain/usecases/movie_usecase.dart';
 import '../../domain/entities/new_movie/movie.dart';
 
 class MovieViewModel extends StateNotifier<AsyncValue<List<Movie>>> {
- // final GetPopularMoviesUseCase getPopularMoviesUseCase;
   final MovieUsecase useCase;
 
   int _currentPage = 1;
-  bool _hashmorePages = true;
+  int _totalPages = 1;
+  final List<Movie> _currentMovies = [];
+  bool _isLoading = false;
 
   MovieViewModel(this.useCase)
       : super(const AsyncValue.loading()) {
     loadMovies();
   }
 
+  bool get hashMore => _currentPage <= _totalPages;
+
   Future<void> loadMovies() async {
-    if (!_hashmorePages) return;
-    state = const AsyncValue.loading();
+   if (!hashMore || _isLoading) return;
+  _isLoading = true;
+  if (_currentPage == 1) state = const AsyncValue.loading();
+
     try {
-      final newMovies =
-          await useCase.execute(page: _currentPage);
-      _hashmorePages = newMovies.isNotEmpty;
+       final result = await useCase.execute(page: _currentPage);
+      _totalPages = result.totalPages;
       _currentPage++;
-      state = AsyncValue.data([...state.value ?? [], ...newMovies]);
+      _currentMovies.addAll(result.movies);
+      
+      state = AsyncValue.data(List.from(_currentMovies));
     } catch (e) {
       state = AsyncValue.error(e, StackTrace.current);
+    }finally{
+      _isLoading = false;
     }
   }
 }

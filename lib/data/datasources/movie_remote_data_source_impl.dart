@@ -10,25 +10,37 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
   MovieRemoteDataSourceImpl({required this.dio});
 
   @override
-  Future<List<MovieModel>> getPopularMovies({int page = 1}) async {
+  Future<({List<MovieModel>movies, int totalPages})> getPopularMovies({int page = 1}) async {
     // Llamada a la API de The Movie DB
     final response = await dio.get('/movie/popular', queryParameters: {'page': page});
     final data = response.data['results'] as List;
-    return data.map((json)=> MovieModel.fromJson(json)).toList();
+    final totalPages = response.data['total_pages'] as int;
+    return (
+      movies: data.map((json)=> MovieModel.fromJson(json)).toList(),
+      totalPages: totalPages,
+    );
   }
   
   @override
-  Future<List<MovieModel>> getTopRated({int page = 1}) async {
+  Future<({List<MovieModel>movies, int totalPages})> getTopRated({int page = 1}) async {
     final response = await dio.get('/movie/top_rated', queryParameters: {'page': page});
     final data = response.data['results'] as List;
-    return data.map((json)=> MovieModel.fromJson(json)).toList();
+    final totalPages = response.data['total_pages'] as int;
+    return (
+      movies: data.map((json)=> MovieModel.fromJson(json)).toList(),
+      totalPages: totalPages,
+    );
   }
   
   @override
-  Future<List<MovieModel>> getUpComing({int page = 1}) async {
+  Future<({List<MovieModel>movies, int totalPages})> getUpComing({int page = 1}) async {
     final response = await dio.get('/movie/upcoming', queryParameters: {'page': page});
     final data = response.data['results'] as List;
-    return data.map((json)=> MovieModel.fromJson(json)).toList();
+    final totalPages = response.data['total_pages'] as int;
+    return (
+      movies: data.map((json)=> MovieModel.fromJson(json)).toList(),
+      totalPages: totalPages,
+    );
   }
   
   @override
