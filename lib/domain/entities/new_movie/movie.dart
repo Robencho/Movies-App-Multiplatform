@@ -13,6 +13,7 @@ class Movie {
   final bool video;
   final double voteAverage;
   final int voteCount;
+  final int? totalPages;
 
   const Movie({
       required this.adult,
@@ -29,5 +30,6 @@ class Movie {
     required this.video,
     required this.voteAverage,
     required this.voteCount,
+    required this.totalPages
   });
 }

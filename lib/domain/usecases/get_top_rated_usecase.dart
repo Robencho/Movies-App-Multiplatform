@@ -9,7 +9,7 @@ class GetTopRatedUseCase implements MovieUsecase {
   GetTopRatedUseCase(this.repository);
 
   @override
-  Future<List<Movie>> execute({int page = 1}) async {
+  Future<({List<Movie>movies, int totalPages})> execute({int page = 1}) async {
     return await repository.getTopRated(page: page);
   }
 }

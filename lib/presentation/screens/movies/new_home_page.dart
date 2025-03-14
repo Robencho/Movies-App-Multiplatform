@@ -94,7 +94,7 @@ class MoviesHorizontalList extends ConsumerWidget {
       child: moviesState.when(
         data: (movies) => ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: movies.length + 1,
+          itemCount: movies.length + (viewModel.hashMore ? 1 : 0),
           itemBuilder: (ctx, i) {
             if (i < movies.length) {
               return _MovieCard(movie: movies[i]);

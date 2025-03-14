@@ -9,21 +9,30 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<List<Movie>> getPopularMovies({int page = 1}) async {
-    final movies = await remoteDataSource.getPopularMovies(page: page);
-    return movies.map((model) => model.toEntity()).toList();
+  Future<({List<Movie>movies, int totalPages})> getPopularMovies({int page = 1}) async {
+    final result = await remoteDataSource.getPopularMovies(page: page);
+    return (
+      movies: result.movies.map((model) => model.toEntity()).toList(),
+      totalPages: result.totalPages
+    );
   }
 
   @override
-  Future<List<Movie>> getTopRated({int page = 1}) async {
-    final movies = await remoteDataSource.getTopRated(page: page);
-    return movies.map((model) => model.toEntity()).toList();
+  Future<({List<Movie>movies, int totalPages})> getTopRated({int page = 1}) async {
+    final result = await remoteDataSource.getTopRated(page: page);
+    return (
+      movies: result.movies.map((model) => model.toEntity()).toList(),
+      totalPages: result.totalPages
+    );
   }
 
   @override
-  Future<List<Movie>> getUpComing({int page = 1}) async {
-    final movies = await remoteDataSource.getUpComing(page: page);
-    return movies.map((model) => model.toEntity()).toList();
+  Future<({List<Movie>movies, int totalPages})> getUpComing({int page = 1}) async {
+    final result = await remoteDataSource.getUpComing(page: page);
+    return (
+      movies:result.movies.map((model) => model.toEntity()).toList(),
+      totalPages: result.totalPages
+    );
   }
   
   @override

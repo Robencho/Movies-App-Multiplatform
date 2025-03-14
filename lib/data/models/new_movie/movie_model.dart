@@ -36,6 +36,8 @@ class MovieModel {
   final double voteAverage;
    @JsonKey(name: 'vote_count', defaultValue: 0)
   final int voteCount;
+  @JsonKey(name: 'total_pages', defaultValue: 0)
+  final int? totalPages;
 
   MovieModel({
    required this.adult,
@@ -52,6 +54,7 @@ class MovieModel {
     required this.video,
     required this.voteAverage,
     required this.voteCount,
+    required this.totalPages
   });
 
   factory MovieModel.fromJson(Map<String, dynamic> json) =>
@@ -87,8 +90,8 @@ class MovieModel {
       title: title,
       video: video,
       voteAverage: voteAverage,
-      voteCount: voteCount
-      
+      voteCount: voteCount,
+      totalPages: totalPages
     );
   }
 }

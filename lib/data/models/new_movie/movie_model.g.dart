@@ -8,7 +8,7 @@ part of 'movie_model.dart';
 
 MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
       adult: json['adult'] as bool,
-      backdropPath: json['backdrop_path'] as String? ?? '',
+      backdropPath: json['backdrop_path'] as String?,
       genreIds: (json['genre_ids'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
               .toList() ??
@@ -20,7 +20,7 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
       popularity: json['popularity'] == null
           ? 0
           : MovieModel._parseDouble(json['popularity']),
-      posterPath: json['poster_path'] as String? ?? '',
+      posterPath: json['poster_path'] as String?,
       releaseDate: json['release_date'] == null
           ? DateTime.now()
           : DateTime.parse(json['release_date'] as String),
@@ -28,6 +28,7 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
       video: json['video'] as bool? ?? false,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0,
       voteCount: (json['vote_count'] as num?)?.toInt() ?? 0,
+      totalPages: (json['total_pages'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$MovieModelToJson(MovieModel instance) =>
@@ -46,4 +47,5 @@ Map<String, dynamic> _$MovieModelToJson(MovieModel instance) =>
       'video': instance.video,
       'vote_average': instance.voteAverage,
       'vote_count': instance.voteCount,
+      'total_pages': instance.totalPages,
     };
