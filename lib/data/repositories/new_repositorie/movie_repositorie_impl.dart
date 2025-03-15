@@ -1,3 +1,4 @@
+import 'package:movies_app/domain/entities/actor.dart';
 import 'package:movies_app/domain/repositories/new_repositorie/movie_repositorie.dart';
 
 import '../../../domain/entities/new_movie/movie.dart';
@@ -39,5 +40,11 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Movie> getmoviebyId(String id)async {
     final moviedetail = await remoteDataSource.getmoviebyId(id);
     return moviedetail.toEntity();
+  }
+
+  @override
+  Future<List<Actor>> getMovieCast(String movieId) async {
+    final actors = await remoteDataSource.getMovieCast(movieId);
+    return actors.map((model) => model.toEntity()).toList();
   }
 }
