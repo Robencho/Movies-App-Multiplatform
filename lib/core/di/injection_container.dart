@@ -5,6 +5,7 @@ import 'package:movies_app/core/network/dio_client.dart';
 import 'package:movies_app/data/datasources/movie_remote_data_source_impl.dart';
 import 'package:movies_app/data/repositories/new_repositorie/movie_repositorie_impl.dart';
 import 'package:movies_app/domain/usecases/get_movie_by_id.dart';
+import 'package:movies_app/domain/usecases/get_movie_cast.dart';
 import 'package:movies_app/domain/usecases/get_popular_movies.dart';
 import 'package:movies_app/domain/usecases/get_top_rated_usecase.dart';
 import 'package:movies_app/domain/usecases/get_upcoming_movies_usecase.dart';
@@ -14,15 +15,15 @@ import '../../domain/repositories/new_repositorie/movie_repositorie.dart';
 
 final getIt = GetIt.instance;
 
-void setupDependencies(){
+void setupDependencies() {
   // Client HTTP
-  getIt.registerLazySingleton<http.Client>(()=> http.Client());
+  getIt.registerLazySingleton<http.Client>(() => http.Client());
 
   // Client Dio
-  getIt.registerLazySingleton<Dio>(()=> DiosClient().dio);
+  getIt.registerLazySingleton<Dio>(() => DiosClient().dio);
 
   // Repositories
-   getIt.registerLazySingleton<MovieRepository>(
+  getIt.registerLazySingleton<MovieRepository>(
     () => MovieRepositoryImpl(remoteDataSource: getIt()),
   );
 
@@ -33,7 +34,8 @@ void setupDependencies(){
 
   // Casos de Uso
   getIt.registerLazySingleton(() => GetPopularMoviesUseCase(getIt()));
-  getIt.registerLazySingleton(()=> GetTopRatedUseCase(getIt()));
-  getIt.registerLazySingleton(()=> GetUpcomingMoviesUsecase(getIt()));
-  getIt.registerLazySingleton(()=> GetMovieByIdUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetTopRatedUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetUpcomingMoviesUsecase(getIt()));
+  getIt.registerLazySingleton(() => GetMovieByIdUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetMovieCastUseCase(getIt()));
 }

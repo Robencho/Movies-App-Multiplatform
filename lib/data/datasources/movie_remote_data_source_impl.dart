@@ -1,5 +1,7 @@
 
 import 'package:dio/dio.dart';
+import 'package:movies_app/domain/entities/actor.dart';
+import '../models/new_movie/actor_model.dart';
 import '../models/new_movie/movie_model.dart';
 import 'movie_remote_datasource.dart';
 
@@ -49,5 +51,17 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
 
     if(response.statusCode != 200) throw Exception('Movie por id: $id not found.');
     return MovieModel.fromJson(response.data);
+  }
+
+  @override
+  Future<List<ActorModel>> getMovieCast(String movieId) async {
+    final response = await dio.get('/movie/$movieId/credits');
+    
+    final cast = response.data['cast'] as List;
+    return cast
+      .where((json) => json['profile_path'] != null) // Filtrar actores sin foto
+      .map((json) => ActorModel.fromJson(json))
+      .toList();
+    
   }
 }
