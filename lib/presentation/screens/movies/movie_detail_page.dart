@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:movies_app/domain/entities/new_movie/movie.dart';
+import 'package:movies_app/domain/entities/movie.dart';
 import 'package:movies_app/presentation/providers/new_movie_provider/get_movie_by_id_provider.dart';
 
 import '../../../domain/entities/actor.dart';

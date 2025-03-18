@@ -1,6 +1,6 @@
-import 'package:movies_app/domain/repositories/new_repositorie/movie_repositorie.dart';
+import 'package:movies_app/domain/repositories/movie_repositorie.dart';
 
-import '../entities/new_movie/movie.dart';
+import '../entities/movie.dart';
 
 class GetMovieByIdUseCase{
   final MovieRepository repository;

@@ -2,7 +2,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:movies_app/core/constants/environment.dart';
 
-import '../../../domain/entities/new_movie/movie.dart';
+import '../../domain/entities/movie.dart';
 
 part 'movie_model.g.dart';
 

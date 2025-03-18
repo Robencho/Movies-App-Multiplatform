@@ -1,8 +1,8 @@
 import 'package:movies_app/domain/entities/actor.dart';
-import 'package:movies_app/domain/repositories/new_repositorie/movie_repositorie.dart';
+import 'package:movies_app/domain/repositories/movie_repositorie.dart';
 
-import '../../../domain/entities/new_movie/movie.dart';
-import '../../datasources/movie_remote_datasource.dart';
+import '../../domain/entities/movie.dart';
+import '../datasources/movie_remote_datasource.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;

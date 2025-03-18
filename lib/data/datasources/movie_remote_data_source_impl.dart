@@ -1,8 +1,8 @@
 
 import 'package:dio/dio.dart';
 import 'package:movies_app/domain/entities/actor.dart';
-import '../models/new_movie/actor_model.dart';
-import '../models/new_movie/movie_model.dart';
+import '../models/actor_model.dart';
+import '../models/movie_model.dart';
 import 'movie_remote_datasource.dart';
 
 class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {

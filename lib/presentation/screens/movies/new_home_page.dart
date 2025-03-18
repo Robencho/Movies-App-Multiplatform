@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_app/domain/entities/new_movie/movie.dart';
+import 'package:movies_app/domain/entities/movie.dart';
 import 'package:movies_app/presentation/providers/new_movie_provider/top_rated_movies_provider.dart';
 import 'package:movies_app/presentation/providers/new_movie_provider/up_coming_movies_provider.dart';
 

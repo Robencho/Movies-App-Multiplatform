@@ -1,6 +1,6 @@
 
 import 'package:movies_app/domain/entities/actor.dart';
-import 'package:movies_app/domain/entities/new_movie/movie.dart';
+import 'package:movies_app/domain/entities/movie.dart';
 
 abstract class MovieRepository {
   Future<({List<Movie>movies, int totalPages})> getPopularMovies({int page = 1});

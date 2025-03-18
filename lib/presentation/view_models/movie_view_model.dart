@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_app/domain/usecases/movie_usecase.dart';
 
-import '../../domain/entities/new_movie/movie.dart';
+import '../../domain/entities/movie.dart';
 
 class MovieViewModel extends StateNotifier<AsyncValue<List<Movie>>> {
   final MovieUsecase useCase;
