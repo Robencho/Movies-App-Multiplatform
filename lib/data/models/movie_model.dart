@@ -2,7 +2,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:movies_app/core/constants/environment.dart';
 
-import '../../../domain/entities/new_movie/movie.dart';
+import '../../domain/entities/movie.dart';
 
 part 'movie_model.g.dart';
 
@@ -26,8 +26,8 @@ class MovieModel {
   final double popularity;
    @JsonKey(name: 'poster_path')
   final String? posterPath;
-   @JsonKey(name: 'release_date', defaultValue: DateTime.now)
-  final DateTime? releaseDate;
+   @JsonKey(name: 'release_date')
+  final String? releaseDate;
    @JsonKey(name: 'title', defaultValue: '')
   final String title;
    @JsonKey(name: 'video', defaultValue: false)
@@ -86,7 +86,7 @@ class MovieModel {
       overview: overview,
       popularity: popularity,
       posterPath:getFullPosterPath(posterPath),
-      releaseDate: releaseDate,
+      releaseDate: releaseDate ?? 'No disponible',
       title: title,
       video: video,
       voteAverage: voteAverage,

@@ -1,5 +1,5 @@
 import '../entities/actor.dart';
-import '../repositories/new_repositorie/movie_repositorie.dart';
+import '../repositories/movie_repositorie.dart';
 
 class GetMovieCastUseCase {
   final MovieRepository repository;

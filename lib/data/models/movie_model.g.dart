@@ -21,9 +21,7 @@ MovieModel _$MovieModelFromJson(Map<String, dynamic> json) => MovieModel(
           ? 0
           : MovieModel._parseDouble(json['popularity']),
       posterPath: json['poster_path'] as String?,
-      releaseDate: json['release_date'] == null
-          ? DateTime.now()
-          : DateTime.parse(json['release_date'] as String),
+      releaseDate: json['release_date'] as String?,
       title: json['title'] as String? ?? '',
       video: json['video'] as bool? ?? false,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0,
@@ -42,7 +40,7 @@ Map<String, dynamic> _$MovieModelToJson(MovieModel instance) =>
       'overview': instance.overview,
       'popularity': instance.popularity,
       'poster_path': instance.posterPath,
-      'release_date': instance.releaseDate?.toIso8601String(),
+      'release_date': instance.releaseDate,
       'title': instance.title,
       'video': instance.video,
       'vote_average': instance.voteAverage,
