@@ -16,7 +16,12 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     
     return Scaffold(
-      appBar: AppBar(title: const Text('MovieDB App')),
+      appBar: AppBar(title: const Text('Poncho Movie DB'),
+      actions: [
+        IconButton(
+          onPressed: ()=> context.push('/search'), 
+          icon: const Icon(Icons.search)),
+      ],),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,6 +57,8 @@ class HomePage extends ConsumerWidget {
     required String title,
     required AutoDisposeStateNotifierProvider<MovieViewModel, AsyncValue<List<Movie>>> provider,
   }) {
+    final size = MediaQuery.of(context).size;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,17 +68,14 @@ class HomePage extends ConsumerWidget {
         ),
         SizedBox(
           width: double.infinity,
-          height: 225,
+          height: size.height * 0.25,
           child: MoviesHorizontalList(provider: provider),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 8),
       ],
     );
   }
 }
-
-
-// re suable
 
 class MoviesHorizontalList extends ConsumerWidget {
   final AutoDisposeStateNotifierProvider<MovieViewModel, AsyncValue<List<Movie>>> provider;
@@ -124,22 +128,28 @@ class _MovieCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(3),
       child: SizedBox(
-        width: size.width * 0.3,
-        height: size.height * 0.7,
+        width: size.width * 0.28,
         child: GestureDetector(
           onTap: () {
             context.push('/movie/${movie.id}');
           },
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
                   movie.posterPath,
                   width: size.width * 0.26,
+                  fit: BoxFit.cover,
                 ),
               ),
-              Text(movie.title)
+              Row(
+                children: [
+                  Icon(Icons.star_half_outlined),
+                  Text(movie.voteAverage.toString(), style: textStyles.labelMedium,)
+                ],
+              ),
             ],
           ),
         ),

@@ -9,6 +9,7 @@ import 'package:movies_app/domain/usecases/get_movie_cast.dart';
 import 'package:movies_app/domain/usecases/get_popular_movies.dart';
 import 'package:movies_app/domain/usecases/get_top_rated_usecase.dart';
 import 'package:movies_app/domain/usecases/get_upcoming_movies_usecase.dart';
+import 'package:movies_app/domain/usecases/search_movies.dart';
 
 import '../../data/datasources/movie_remote_datasource.dart';
 import '../../domain/repositories/movie_repositorie.dart';
@@ -38,4 +39,5 @@ void setupDependencies() {
   getIt.registerLazySingleton(() => GetUpcomingMoviesUsecase(getIt()));
   getIt.registerLazySingleton(() => GetMovieByIdUseCase(getIt()));
   getIt.registerLazySingleton(() => GetMovieCastUseCase(getIt()));
+  getIt.registerLazySingleton(() => SearchMoviesUseCase(getIt()));
 }

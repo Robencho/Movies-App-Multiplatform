@@ -8,4 +8,6 @@ abstract class MovieRemoteDataSource {
   Future<({List<MovieModel>movies, int totalPages})> getUpComing({int page = 1});
   Future<MovieModel> getmoviebyId(String id);
   Future<List<ActorModel>> getMovieCast(String movieId);
+
+  Future<List<MovieModel>> searchMovies(String query);
 }

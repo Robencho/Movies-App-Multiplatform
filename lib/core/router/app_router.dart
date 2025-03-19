@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/presentation/screens/movies/movie_detail_page.dart';
+import 'package:movies_app/presentation/screens/movies/movie_search_screen.dart';
 import 'package:movies_app/presentation/screens/movies/new_home_page.dart';
 
 final appRouter = GoRouter(initialLocation: '/', routes: [
@@ -15,5 +16,13 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
               final movieId = state.pathParameters['id'] ?? 'no-id';
               return MovieDetailPage(movieId: movieId);
             }),
+
+          GoRoute(
+            path: '/search',
+            name: MovieSearchScreen.name,
+            builder: (context, state) {
+              return MovieSearchScreen();
+            },
+            )
       ])
 ]);

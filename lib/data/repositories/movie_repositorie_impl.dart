@@ -47,4 +47,10 @@ class MovieRepositoryImpl implements MovieRepository {
     final actors = await remoteDataSource.getMovieCast(movieId);
     return actors.map((model) => model.toEntity()).toList();
   }
+  
+  @override
+  Future<List<Movie>> searchMovies(String query)async {
+      final models = await remoteDataSource.searchMovies(query);
+      return models.map((model)=> model.toEntity()).toList();
+  }
 }
