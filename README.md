@@ -12,6 +12,10 @@ Aplicación móvil de películas desarrollada con Flutter, Clean Architecture y 
   <img src="https://raw.githubusercontent.com/[tu_usuario]/[tu_repositorio]/main/screenshots/search.png" width="30%">
 </p>
 
+## 🎥 Demo en Video
+
+[![Ver Demo](https://img.youtube.com/vi/ABC123/0.jpg)](https://youtu.be/uhRe6hDq1fQ)
+
 ## 🌟 Características
 
 - **Explora películas**: Listado paginado de películas populares/tendencia.
@@ -84,5 +88,5 @@ Esta aplicación utiliza la API pública de [**The Movie Database (TMDb)**](http
 ---
 
 **Desarrollado con ❤️ por [Rubian Llanos]**  
-[![GitHub](https://img.shields.io/badge/GitHub-@tu_usuario-blue?logo=github)](https://github.com/Robencho)  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Tu_Nombre-blue?logo=linkedin)](https://www.linkedin.com/in/rubian-llanos-a-8b7050113/)
+[![GitHub](https://img.shields.io/badge/GitHub-@Robencho-blue?logo=github)](https://github.com/Robencho)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Rubian_Llanos-blue?logo=linkedin)](https://www.linkedin.com/in/rubian-llanos-a-8b7050113/)
