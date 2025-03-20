@@ -12,31 +12,31 @@ class MovieModel {
   final bool adult;
    @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
-   @JsonKey(name: 'genre_ids', defaultValue: [])
+   @JsonKey(name: 'genre_ids')
   final List<int> genreIds;
    @JsonKey(name: 'id')
   final int id;
-   @JsonKey(name: 'original_language', defaultValue: '')
+   @JsonKey(name: 'original_language')
   final String originalLanguage;
-   @JsonKey(name: 'original_title', defaultValue: '')
+   @JsonKey(name: 'original_title')
   final String originalTitle;
-   @JsonKey(name: 'overview', defaultValue: '')
-  final String overview;
+   @JsonKey(name: 'overview')
+  final String? overview;
    @JsonKey(name: 'popularity', fromJson: _parseDouble, defaultValue: 0)
   final double popularity;
    @JsonKey(name: 'poster_path')
   final String? posterPath;
    @JsonKey(name: 'release_date')
   final String? releaseDate;
-   @JsonKey(name: 'title', defaultValue: '')
+   @JsonKey(name: 'title')
   final String title;
-   @JsonKey(name: 'video', defaultValue: false)
+   @JsonKey(name: 'video')
   final bool video;
-   @JsonKey(name: 'vote_average', defaultValue: 0)
+   @JsonKey(name: 'vote_average')
   final double voteAverage;
-   @JsonKey(name: 'vote_count', defaultValue: 0)
+   @JsonKey(name: 'vote_count')
   final int voteCount;
-  @JsonKey(name: 'total_pages', defaultValue: 0)
+  @JsonKey(name: 'total_pages')
   final int? totalPages;
 
   MovieModel({
@@ -83,7 +83,7 @@ class MovieModel {
       id: id,
       originalLanguage: originalLanguage,
       originalTitle: originalTitle,
-      overview: overview,
+      overview: overview ?? 'No description',
       popularity: popularity,
       posterPath:getFullPosterPath(posterPath),
       releaseDate: releaseDate ?? 'No disponible',

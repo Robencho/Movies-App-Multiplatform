@@ -84,3 +84,7 @@ Esta aplicación utiliza la API pública de [**The Movie Database (TMDb)**](http
 **Desarrollado con ❤️ por [Rubian Llanos]**  
 [![GitHub](https://img.shields.io/badge/GitHub-@Robencho-blue?logo=github)](https://github.com/Robencho)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Rubian_Llanos-blue?logo=linkedin)](https://www.linkedin.com/in/rubian-llanos-a-8b7050113/)
+
+## CI/CD
+[![CI/CD](https://github.com/Robencho/movies_app/actions/workflows/flutter.yml/badge.svg)](https://github.com/Robencho/movies_app/actions)
+[![Coverage](https://codecov.io/gh/tu_usuario/tu_repositorio/branch/main/graph/badge.svg)](https://codecov.io/gh/tu_usuario/tu_repositorio)
