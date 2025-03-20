@@ -19,6 +19,10 @@ jobs:
           flutter-version: '3.29.2'  # 👈 Usa tu versión de Flutter
           channel: stable
 
+      - name: Create .env file
+        run: |
+            echo "TMDB_API_KEY=${{ secrets.THE_MOVIE_DB_KEY }}" > .env      
+
       - name: Install Dependencies
         run: flutter pub get
 
