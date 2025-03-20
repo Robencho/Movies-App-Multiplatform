@@ -6,15 +6,9 @@
 
 Aplicación móvil de películas desarrollada con Flutter, Clean Architecture y la API de The Movie Database (TMDb). Explora películas populares, busca tus favoritas y descubre detalles como el reparto, sinopsis y más.
 
-<p>
-  <img src="https://raw.githubusercontent.com/[tu_usuario]/[tu_repositorio]/main/screenshots/home.png" width="30%">
-  <img src="https://raw.githubusercontent.com/[tu_usuario]/[tu_repositorio]/main/screenshots/detail.png" width="30%">
-  <img src="https://raw.githubusercontent.com/[tu_usuario]/[tu_repositorio]/main/screenshots/search.png" width="30%">
-</p>
-
 ## 🎥 Demo en Video
 
-[![Ver Demo](https://img.youtube.com/vi/ABC123/0.jpg)](https://youtu.be/uhRe6hDq1fQ)
+[![Ver Demo](https://i.ytimg.com/an_webp/uhRe6hDq1fQ/mqdefault_6s.webp?du=3000&sqp=CJjL8L4G&rs=AOn4CLCzZNb_KuhwvfXfCVE4GCEDcnnLxg)](https://youtu.be/uhRe6hDq1fQ)
 
 ## 🌟 Características
 
