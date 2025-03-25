@@ -6,9 +6,13 @@
 
 Aplicación móvil de películas desarrollada con Flutter, Clean Architecture y la API de The Movie Database (TMDb). Explora películas populares, busca tus favoritas y descubre detalles como el reparto, sinopsis y más.
 
+## CI/CD
+[![CI/CD](https://github.com/Robencho/movies_app/actions/workflows/flutter.yml/badge.svg)](https://github.com/Robencho/movies_app/actions)
+[![Coverage](https://codecov.io/gh/tu_usuario/tu_repositorio/branch/main/graph/badge.svg)](https://codecov.io/gh/tu_usuario/tu_repositorio)
+
 ## 🎥 Demo en Video
 
-[![Ver Demo](https://i.ytimg.com/an_webp/uhRe6hDq1fQ/mqdefault_6s.webp?du=3000&sqp=CJjL8L4G&rs=AOn4CLCzZNb_KuhwvfXfCVE4GCEDcnnLxg)](https://youtu.be/uhRe6hDq1fQ)
+[![Alt text](https://img.youtube.com/vi/uhRe6hDq1fQ/0.jpg)](https://www.youtube.com/watch?v=uhRe6hDq1fQ)
 
 ## 🌟 Características
 
@@ -84,7 +88,3 @@ Esta aplicación utiliza la API pública de [**The Movie Database (TMDb)**](http
 **Desarrollado con ❤️ por [Rubian Llanos]**  
 [![GitHub](https://img.shields.io/badge/GitHub-@Robencho-blue?logo=github)](https://github.com/Robencho)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Rubian_Llanos-blue?logo=linkedin)](https://www.linkedin.com/in/rubian-llanos-a-8b7050113/)
-
-## CI/CD
-[![CI/CD](https://github.com/Robencho/movies_app/actions/workflows/flutter.yml/badge.svg)](https://github.com/Robencho/movies_app/actions)
-[![Coverage](https://codecov.io/gh/tu_usuario/tu_repositorio/branch/main/graph/badge.svg)](https://codecov.io/gh/tu_usuario/tu_repositorio)
