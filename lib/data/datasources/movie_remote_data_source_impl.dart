@@ -16,8 +16,8 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
     final data = response.data['results'] as List;
     final dataFilter = data
         .where((movie) =>
-            (movie['poster_path'] ?? '').isNotEmpty &&
-            (movie['overview'] ?? '').isNotEmpty)
+            (movie['poster_path'] ?? '').isNotEmpty
+            )
         .map((json) => MovieModel.fromJson(json))
         .toList();
 
@@ -36,8 +36,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
     final data = response.data['results'] as List;
     final dataFilter = data
         .where((movie) =>
-            (movie['poster_path'] ?? '').isNotEmpty &&
-            (movie['overview'] ?? '').isNotEmpty)
+            (movie['poster_path'] ?? '').isNotEmpty && movie['overview'] != null || movie['overview'].isNotEmpty)
         .map((json) => MovieModel.fromJson(json))
         .toList();
     final totalPages = response.data['total_pages'] as int;
@@ -55,8 +54,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
     final data = response.data['results'] as List;
     final dataFilter = data
         .where((movie) =>
-            (movie['poster_path'] ?? '').isNotEmpty &&
-            (movie['overview'] ?? '').isNotEmpty)
+            (movie['poster_path'] ?? '').isNotEmpty)
         .map((json) => MovieModel.fromJson(json))
         .toList();
 
@@ -84,7 +82,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
     final cast = response.data['cast'] as List;
     return cast
         .where(
-            (json) => json['profile_path'] != null) // Filtrar actores sin foto
+            (json) => json['profile_path'] != null)
         .map((json) => ActorModel.fromJson(json))
         .toList();
   }
