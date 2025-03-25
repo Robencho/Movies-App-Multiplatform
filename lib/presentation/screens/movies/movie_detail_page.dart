@@ -49,6 +49,7 @@ class _BuildMovieContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final textStyle = Theme.of(context).textTheme;
+    final colors = Theme.of(context).colorScheme;
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -66,7 +67,7 @@ class _BuildMovieContent extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(movie.title, style: textStyle.titleLarge,),
+                Text(movie.title, style: textStyle.titleLarge?.copyWith(color: colors.primary)),
                 Text(
                   'Fecha: ${movie.releaseDate.isNotEmpty 
                     ? DateFormat('yyyy').format(DateTime.parse(movie.releaseDate)) 

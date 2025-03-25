@@ -13,8 +13,10 @@ class MovieSearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final searchState = ref.watch(searchMoviesProvider);
     final notifier = ref.read(searchMoviesProvider.notifier);
+    final colors = Theme.of(context).colorScheme;
 
     return Scaffold(
+      backgroundColor:colors.surface ,
       appBar: AppBar(
         title: TextField(
           autofocus: true,

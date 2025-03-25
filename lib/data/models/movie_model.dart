@@ -13,7 +13,7 @@ class MovieModel {
    @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
    @JsonKey(name: 'genre_ids')
-  final List<int> genreIds;
+  final List<int>? genreIds;
    @JsonKey(name: 'id')
   final int id;
    @JsonKey(name: 'original_language')
@@ -79,7 +79,7 @@ class MovieModel {
     return Movie(
       adult: adult,
       backdropPath: getFullPosterPath(backdropPath),
-      genreIds: genreIds,
+      genreIds: genreIds ?? [],
       id: id,
       originalLanguage: originalLanguage,
       originalTitle: originalTitle,

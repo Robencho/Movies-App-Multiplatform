@@ -16,6 +16,7 @@ class MovieSearchItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final colors = Theme.of(context).colorScheme;
     return ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(8),
@@ -27,8 +28,8 @@ class MovieSearchItem extends StatelessWidget {
          
         ),
       ),
-      title: Text(movie.title),
-      subtitle: Text(movie.overview, maxLines: 2),
+      title: Text(movie.title, style: TextStyle(color: colors.primary),),
+      subtitle: Text(movie.overview, maxLines: 2, style: TextStyle(color: colors.onSurface),),
       onTap: onTap,
     );
   }

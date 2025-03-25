@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movies_app/domain/entities/movie.dart';
 import 'package:movies_app/presentation/providers/new_movie_provider/top_rated_movies_provider.dart';
 import 'package:movies_app/presentation/providers/new_movie_provider/up_coming_movies_provider.dart';
+import 'package:movies_app/presentation/providers/theme/theme_providers.dart';
 
 import '../../providers/new_movie_provider/popular_movies_provider.dart';
 import '../../view_models/movie_view_model.dart';
@@ -14,14 +15,36 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
+    final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    final theme = ref.watch(themeProvider);
+    final currentBrightness =
+        theme == AppTheme.dark ? Brightness.dark : Brightness.light;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Poncho Movie DB'),
-      actions: [
-        IconButton(
-          onPressed: ()=> context.push('/search'), 
-          icon: const Icon(Icons.search)),
-      ],),
+      backgroundColor: colors.surface,
+      appBar: AppBar(
+        title: Text('Poncho Movie DB', style: textTheme.headlineSmall),
+        actions: [
+          Icon(
+            currentBrightness == Brightness.dark
+                ? Icons.dark_mode
+                : Icons.light_mode,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          const SizedBox(width: 8),
+          Switch.adaptive(
+            value: theme == AppTheme.dark,
+            onChanged: (_) => ref.read(themeProvider.notifier).toggleTheme(),
+            activeColor: colors.primary,
+            activeTrackColor: colors.primary.withOpacity(0.3),
+          ),
+          IconButton(
+              onPressed: () => context.push('/search'),
+              icon: const Icon(Icons.search)),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,14 +55,14 @@ class HomePage extends ConsumerWidget {
               title: 'Populares',
               provider: thePopularMoviesProvider,
             ),
-            
+
             // Categoría 2: Mejor Valoradas
             _buildCategorySection(
               context: context,
               title: 'Mejor Valoradas',
               provider: theTopRatedMoviesProvider,
             ),
-            
+
             // Categoría 3: Próximos Estrenos
             _buildCategorySection(
               context: context,
@@ -55,16 +78,22 @@ class HomePage extends ConsumerWidget {
   Widget _buildCategorySection({
     required BuildContext context,
     required String title,
-    required AutoDisposeStateNotifierProvider<MovieViewModel, AsyncValue<List<Movie>>> provider,
+    required AutoDisposeStateNotifierProvider<MovieViewModel,
+            AsyncValue<List<Movie>>>
+        provider,
   }) {
     final size = MediaQuery.of(context).size;
-
+    final colors = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Text(title, style: Theme.of(context).textTheme.headlineSmall),
+          child: Text(
+            title, 
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            color: colors.primary
+          )),
         ),
         SizedBox(
           width: double.infinity,
@@ -78,7 +107,8 @@ class HomePage extends ConsumerWidget {
 }
 
 class MoviesHorizontalList extends ConsumerWidget {
-  final AutoDisposeStateNotifierProvider<MovieViewModel, AsyncValue<List<Movie>>> provider;
+  final AutoDisposeStateNotifierProvider<MovieViewModel,
+      AsyncValue<List<Movie>>> provider;
 
   const MoviesHorizontalList({super.key, required this.provider});
 
@@ -124,6 +154,7 @@ class _MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyles = Theme.of(context).textTheme;
+    final colors = Theme.of(context).colorScheme;
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.all(3),
@@ -146,8 +177,15 @@ class _MovieCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(Icons.star_half_outlined),
-                  Text(movie.voteAverage.toString(), style: textStyles.labelMedium,)
+                  Icon(
+                    Icons.star_half_outlined,
+                    color: colors.primary,
+                  ),
+                  Text(
+                    movie.voteAverage.toString(),
+                    style: textStyles.labelMedium,
+                    selectionColor: colors.primary,
+                  )
                 ],
               ),
             ],

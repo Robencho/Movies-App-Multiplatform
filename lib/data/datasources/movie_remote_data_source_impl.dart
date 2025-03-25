@@ -36,7 +36,7 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource {
     final data = response.data['results'] as List;
     final dataFilter = data
         .where((movie) =>
-            (movie['poster_path'] ?? '').isNotEmpty)
+            (movie['poster_path'] ?? '').isNotEmpty && movie['overview'] != null || movie['overview'].isNotEmpty)
         .map((json) => MovieModel.fromJson(json))
         .toList();
     final totalPages = response.data['total_pages'] as int;
